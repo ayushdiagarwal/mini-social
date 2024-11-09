@@ -10,3 +10,4 @@ What to do?
 
 - using packages express mongoose dotenv bcryptjs jsonwebtoken cors
 - app.use(cors())
+- associate the posts, comments and stuff with logged in users only
