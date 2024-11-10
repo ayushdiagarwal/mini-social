@@ -14,7 +14,7 @@ const getPosts = asyncHandler(async (req, res) => {
 });
 
 //@desc Create a new post
-//@route POST /api/post/create
+//@route POST /api/posts/create
 //@access private
 const createPost = asyncHandler(async(req,res)=>{
     const {title, body, likes} = req.body;
@@ -33,7 +33,7 @@ const createPost = asyncHandler(async(req,res)=>{
 });
 
 //@desc Get a post
-//@route GET /api/post/:id
+//@route GET /api/posts/:id
 //@access private
 const getPost = asyncHandler(async(req, res)=> {
     const post = await Post.findById(req.params.id);
@@ -45,8 +45,26 @@ const getPost = asyncHandler(async(req, res)=> {
     res.status(200).json(post);
 });
 
+//@desc Like a post
+//@route PATCH /api/posts/:id/
+//@access private
+const updateLikes = asyncHandler(async(req, res)=> {
+    console.log("incrementing like");
+    const post = await Post.findById(req.params.id);
+    if (!post) {
+        res.status(404);
+        throw new Error("Post not found");
+    }
+    
+    // Increment likes and save
+     post.likes += 1;
+     const updatedPost = await post.save();
+ 
+     res.status(200).json({likes: updatedPost.likes}); 
+});
+
 //@desc delete a post
-//@route DELETE /api/post/:id
+//@route DELETE /api/posts/:id
 //@access private
 const deletePost = asyncHandler(async(req,res)=>{
     const post = await Post.findById(req.params.id);
@@ -65,7 +83,7 @@ const deletePost = asyncHandler(async(req,res)=>{
 });
 
 //@desc Update Contact
-//@route PUT /api/post/:id
+//@route PUT /api/posts/:id
 //@access private
 const updatePost = asyncHandler(async(req, res)=> {
     const post = await Post.findById(req.params.id);
@@ -84,4 +102,4 @@ const updatePost = asyncHandler(async(req, res)=> {
 })
 
 
-module.exports = {getPost, getPosts, createPost, deletePost, updatePost};
+module.exports = {getPost, getPosts, createPost, deletePost, updatePost, updateLikes};

@@ -11,6 +11,7 @@
 - [x] using packages express mongoose dotenv bcryptjs jsonwebtoken cors
 - [x] associate the posts, comments and stuff with logged in users only
 - [ ] keep count of all the posts a user liked (so they can't like it more than once)
+- [ ] make an api for liking the post
 - [ ] keep count of all the posts/comments a user can make, so they can view it in the profile section
 - [ ] home page feed
 - [ ] add tags maybe
