@@ -25,10 +25,7 @@ export function AllPosts() {
             return(
                 <div key={index} className="post">
                     <Link to={`/posts/${post._id}`}>title: {post.title}</Link>
-                    <p>Post Id: {post._id}</p>
-                    <p>body: {post.body}</p>
                     <p>likes: {post.likes}</p>
-                    <p>Created by: {post.user}</p>
                 </div>
             )
           })
