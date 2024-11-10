@@ -70,8 +70,6 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 });
 
-// CURRENT USER NOT WORKING
-
 //@desc Current user
 //@route GET /api/users/current
 //@access private

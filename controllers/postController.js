@@ -13,7 +13,6 @@ const getPosts = asyncHandler(async(req, res) => {
 //@route POST /api/post/create
 //@access private
 const createPost = asyncHandler(async(req,res)=>{
-    console.log("Trying to create a post ... ");
     const {title, body, likes} = req.body;
     if (!title || !body) {
         res.status(400);
