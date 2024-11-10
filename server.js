@@ -31,6 +31,9 @@ app.get('/api/jokes', (req, res) => {
     res.send(jokes);
 })
 
+// using middleware for posts, comments
+app.use("/api/posts", require("./routes/postRoutes"));
+
 // use more middlewares
 app.use("/api/users", require("./routes/userRoutes"));
 

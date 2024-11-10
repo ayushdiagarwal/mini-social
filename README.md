@@ -4,6 +4,7 @@ What to do?
 
 - add authentication
 - add models for user, posts, comments and likes 
+- create apis for adding, removing, updating post and comments
 - home page feed
 - add tags maybe
 

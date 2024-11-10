@@ -59,7 +59,8 @@ const loginUser = asyncHandler(async (req, res) => {
                 id: user.id,
             }            
         }, process.env.ACCESS_TOKEN,
-        {expiresIn: "1m"}
+        // change the expiration time later
+        {expiresIn: "10m"}
         );
         res.status(200).json({accessToken}); 
     }
@@ -69,10 +70,16 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 });
 
+// CURRENT USER NOT WORKING
+
 //@desc Current user
 //@route GET /api/users/current
 //@access private
 const currentUser = asyncHandler(async (req, res) => {
+    console.log("trying to get current user info  ...");
+    if(!req.user) {
+        return res.status(401).json({message: "not signed in"});
+    }
     res.json(req.user);
 });
 
