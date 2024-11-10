@@ -1,37 +1,19 @@
-import { useEffect, useState } from 'react';
 import './App.css';
-import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import AllPosts from './pages/components/AllPosts';
+import PostView from './pages/PostView';
 
 function App() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(()=> {
-    axios.get('/api/posts/').then((response) => {
-      setPosts(response.data);
-    }).catch((error) => {
-      console.log(error);
-    }, []);
-
-  }, []);
-
   return (
-    <>
-      <p>POSTS: {posts.length}</p>
-
-      {
-        posts.map((post, index)=> {
-          return(
-            <div key={index} className="post">
-                <p>title: {post.title}</p>
-                <p>body: {post.body}</p>
-                <p>likes: {post.likes}</p>
-                <p>Created by: {post.user}</p>
-            </div>
-          )
-        })
-      }
-    </>
-  )
-}
+    <Router>
+        <div className="app">
+          <Routes>
+            <Route path="/" element={<AllPosts />} /> 
+            <Route path="/posts/:postId" element={<PostView />}/>
+          </Routes>
+        </div>
+      </Router>
+  );
+};
 
 export default App;

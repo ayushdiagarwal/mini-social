@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 // each comment is associated with a user and a post
+// should not be able to make a comment if there is no user/post
 const commentSchema = mongoose.Schema({
     postId: {
         type: mongoose.Schema.Types.ObjectId,

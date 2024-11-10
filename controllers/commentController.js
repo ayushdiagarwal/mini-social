@@ -1,5 +1,6 @@
 const asyncHandler = require("express-async-handler");
 const Comment = require("../models/commentModel");
+const { post } = require("../routes/commentRoutes");
 
 //@desc Get all comments
 //@route Get /api/comments
@@ -13,8 +14,8 @@ const getComments = asyncHandler(async(req, res) => {
 //@route comment /api/comment/create
 //@access private
 const createComment = asyncHandler(async(req,res)=>{
-    const {title, body, likes} = req.body;
-    if (!title || !body) {
+    const {title, body, likes, postId} = req.body;
+    if (!title || !body || !postId) {
         res.status(400);
         throw new Error("A comment must have a title, body and a user");
     }
@@ -23,6 +24,7 @@ const createComment = asyncHandler(async(req,res)=>{
         title,
         body,
         user: req.user.id,
+        postId,
         likes,
     });
     res.status(201).json(comment);
