@@ -2,9 +2,7 @@ const express = require("express");
 const { getPost, getPosts, createPost, updatePost, deletePost } = require("../controllers/postController");
 const router = express.Router();
 
-// There is an issue with validation token
-
-// after the user has signed in, they are assigned a jwt which is their validation token and will be used for guture operations
+// after the user has signed in, they are assigned a jwt which is their validation token and will be used for future operations
 const validateToken = require("../middleware/validateTokenHandler");
 console.log(validateToken);
 

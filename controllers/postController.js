@@ -4,10 +4,14 @@ const Post = require("../models/postModel");
 //@desc Get all posts
 //@route Get /api/posts
 //@access private
-const getPosts = asyncHandler(async(req, res) => {
-    // get all posts
-    res.status(200).json({message: `Get all posts`});
-})
+const getPosts = asyncHandler(async (req, res) => {
+    try {
+        const posts = await Post.find(); // Retrieve all posts from MongoDB
+        res.status(200).json(posts); // Send posts as response
+    } catch (error) {
+        res.status(500).json({ message: 'Error retrieving posts' });
+    }
+});
 
 //@desc Create a new post
 //@route POST /api/post/create

@@ -3,42 +3,29 @@ import './App.css';
 import axios from 'axios';
 
 function App() {
-  const [jokes, setJokes] = useState([])
-  const [chuckjoke, setChuckJoke] = useState("");
+  const [posts, setPosts] = useState([]);
 
   useEffect(()=> {
-    axios.get('/api/jokes').then((response) => {
-      setJokes(response.data);
+    axios.get('/api/posts/').then((response) => {
+      setPosts(response.data);
     }).catch((error) => {
       console.log(error);
     }, []);
 
-    fetchNewChuck();
   }, []);
-
-    const fetchNewChuck = () => {
-      axios.get('https://api.chucknorris.io/jokes/random').then((response) => {
-        setChuckJoke(response.data.value);
-      }).catch((error) => {
-        console.log(error);
-      });
-    };
-
-
 
   return (
     <>
-      <h2>Hallo</h2>
-      <p>{chuckjoke}</p>
-      <button onClick={fetchNewChuck}>Get New</button>
-
-      <p>JOKES: {jokes.length}</p>
+      <p>POSTS: {posts.length}</p>
 
       {
-        jokes.map((joke, index)=> {
+        posts.map((post, index)=> {
           return(
-            <div key={joke.id}>
-                <p>{joke.content}</p>
+            <div key={index} className="post">
+                <p>title: {post.title}</p>
+                <p>body: {post.body}</p>
+                <p>likes: {post.likes}</p>
+                <p>Created by: {post.user}</p>
             </div>
           )
         })
@@ -47,4 +34,4 @@ function App() {
   )
 }
 
-export default App
+export default App;
