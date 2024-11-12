@@ -1,28 +1,34 @@
 const asyncHandler = require("express-async-handler");
 const Comment = require("../models/commentModel");
-const { post } = require("../routes/commentRoutes");
 
 //@desc Get all comments
-//@route Get /api/comments
-//@access private
-const getComments = asyncHandler(async(req, res) => {
-    // get all comments
-    res.status(200).json({message: `Get all comments`});
-})
+//@route Get /api/posts/:postId/comments
+//@access public
+const getComments = asyncHandler(async (req, res) => {
+    const { postId } = req.params;
+    console.log(`postId: ${postId}`);
+  
+    try {
+      const comments = await Comment.find({ postId: postId });
+      res.status(200).json(comments);
+    } catch (error) {
+      res.status(500).json({ message: "Server error while fetching the comments" });
+    }
+  });
+
 
 //@desc Create a new comment
-//@route comment /api/comment/create
+//@route POST /api/posts/:postId/comments
 //@access private
 const createComment = asyncHandler(async(req,res)=>{
-    const {title, body, likes, postId} = req.body;
-    if (!title || !body || !postId) {
+    const {content, likes, postId} = req.body;
+    if (!content || !postId) {
         res.status(400);
         throw new Error("A comment must have a title, body and a user");
-    }
+    };
 
     const comment = await Comment.create({
-        title,
-        body,
+        content,
         user: req.user.id,
         postId,
         likes,
@@ -31,7 +37,7 @@ const createComment = asyncHandler(async(req,res)=>{
 });
 
 //@desc Get a comment
-//@route GET /api/comment/:id
+//@route GET /api/posts/:postId/comments/:id
 //@access private
 const getComment = asyncHandler(async(req, res)=> {
     const comment = await Comment.findById(req.params.id);
@@ -44,7 +50,7 @@ const getComment = asyncHandler(async(req, res)=> {
 });
 
 //@desc delete a comment
-//@route DELETE /api/comment/:id
+//@route DELETE /api/posts/:postId/comments/:id
 //@access private
 const deleteComment = asyncHandler(async(req,res)=>{
     const comment = await Comment.findById(req.params.id);

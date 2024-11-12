@@ -1,8 +1,9 @@
 // This will be the detailed post page
 // will include everything about the post -> title, body, likes, user, date, comment
 import { useEffect, useState } from 'react';
-import { useFetcher, useParams } from 'react-router-dom'; 
+import { useParams } from 'react-router-dom'; 
 import axios from 'axios';
+import { CommentView } from './components/CommentView';
 
 
 export function PostView() {
@@ -20,6 +21,7 @@ export function PostView() {
             });
     }, [postId]); 
 
+
     // get the post component from this postId
     return (
         <>
@@ -29,6 +31,8 @@ export function PostView() {
         <p>body: {post.body}</p>
         <p>Created by: {post.user}</p>
         <p></p>
+
+        < CommentView postId={postId}/>
         </>
     );
 };

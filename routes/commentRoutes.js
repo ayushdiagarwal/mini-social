@@ -7,11 +7,11 @@ const validateToken = require("../middleware/validateTokenHandler");
 console.log(validateToken);
 
 // Public routes (GET requests)
-router.route("/:id").get(getComment);
-router.route("/").get(getComments);
+// router.route("/:id").get(getComment);
+router.route("/:postId").get(getComments);
 
 // Private routes (POST, DELETE requests)
-router.post("/", validateToken, createComment);
-router.delete("/:id", validateToken, deleteComment);
+router.post("/", createComment);
+router.delete("/:postId", validateToken, deleteComment);
 
 module.exports = router;
