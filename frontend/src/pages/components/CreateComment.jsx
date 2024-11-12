@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useFetcher, useParams } from 'react-router-dom'; 
 import axios from 'axios';
 
 
-const Login = () => {
-    const [comment, setComment] = useState("");
+const CreateComment = ({postId}) => {
+    const [content, setContent] = useState("");
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        axios.post('/api/posts/:id/', {
-            email: email,
-            password: password,
+        console.log(content);
+        axios.post(`/api/comments/${postId}`, {
+            postId,
+            content,
           })
           .then(function (response) {
             console.log(response);
@@ -28,22 +28,15 @@ const Login = () => {
                 <label>Add Comment: </label>
                 <input 
                     type='text' 
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    value={content}
+                    onChange={(e) => setContent(e.target.value)}
                     required 
                 />
-                <label>Password: </label>
-                <input 
-                    type='password' 
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    required 
-                />
-                <button type="submit">Login</button>
+                <button type="submit">Post</button>
             </form>
 
         </>
     );
 };
 
-export default Login;
+export default CreateComment;

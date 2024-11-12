@@ -29,7 +29,7 @@ const createComment = asyncHandler(async(req,res)=>{
 
     const comment = await Comment.create({
         content,
-        user: req.user.id,
+        // user: req.user.id,
         postId,
         likes,
     });

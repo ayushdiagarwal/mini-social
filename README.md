@@ -10,7 +10,8 @@
 - [x] create apis for adding, removing comments
 - [x] using packages express mongoose dotenv bcryptjs jsonwebtoken cors
 - [x] associate the posts, comments and stuff with logged in users only
-- [ ] Associate comments with a post
+- [x] Associate comments with a post
+- [ ] Add api for liking/unliking api
 - [ ] keep count of all the posts a user liked (so they can't like it more than once)
 - [ ] Create API for liking/unliking posts
 - [ ] Track counts of posts and comments for each user (for profile stats)
@@ -25,11 +26,11 @@
 
 
 ### Frontend
-- [ ] Create a component for creating post
+- [x] Create a component for creating post
 - [ ] Add register page with validation and error display
 - [ ] Add login page with validation and error display
-- [ ] Display comments under posts
-- [ ] Create component for adding a comment
+- [x] Display comments under posts
+- [x] Create component for adding a comment
 - [ ] Implement feed page to display posts in a paginated manner (e.g., "Load More" or infinite scroll)
 - [ ] Add like/unlike button with count display on posts
 - [ ] Create profile page to display user’s posts, comments, and stats

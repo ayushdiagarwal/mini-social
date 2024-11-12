@@ -23,6 +23,18 @@ export function CommentView({postId}) {
     };
     fetchComments();
   }, []);
+
+  const handleLike = async (postId) => {
+    try {
+      const response = await axios.patch(`/api/posts/${postId}/`);
+      setLikesMap(prevLikes => ({
+        ...prevLikes,
+        [postId]: response.data.likes
+      }));
+    } catch (error) {
+      console.error('Error updating likes:', error);
+    }
+  };
   
     return (
       <>
@@ -36,7 +48,7 @@ export function CommentView({postId}) {
                 <div key={comment._id} className="comment">
                     <p>body: {comment.content} </p>
                     <p>likes: {likesMap[comment._id] || comment.likes}</p>
-                    {/* <button onClick={() => handleLike(comment._id)}>Like</button> */}
+                    <button onClick={() => handleLike(comment._id)}>Like</button>
                 </div>
             )
           })

@@ -10,6 +10,7 @@ const postSchema = mongoose.Schema({
         type: String,
         required: [true, "Please add the post body"],
     },
+    // change this to required later
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

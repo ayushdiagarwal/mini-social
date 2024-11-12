@@ -12,6 +12,7 @@ const commentSchema = mongoose.Schema({
         type: String,
         required: [true, "A comment can't be empty"],
     },
+    // change this to required later
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",

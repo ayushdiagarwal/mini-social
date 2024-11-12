@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom'; 
 import axios from 'axios';
 import { CommentView } from './components/CommentView';
+import CreateComment from './components/CreateComment';
+
 
 
 export function PostView() {
@@ -32,6 +34,7 @@ export function PostView() {
         <p>Created by: {post.user}</p>
         <p></p>
 
+        <CreateComment postId={postId} />
         < CommentView postId={postId}/>
         </>
     );

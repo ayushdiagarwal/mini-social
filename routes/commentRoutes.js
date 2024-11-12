@@ -11,7 +11,7 @@ console.log(validateToken);
 router.route("/:postId").get(getComments);
 
 // Private routes (POST, DELETE requests)
-router.post("/", createComment);
+router.post("/:postId", createComment); // add validateToken later
 router.delete("/:postId", validateToken, deleteComment);
 
 module.exports = router;

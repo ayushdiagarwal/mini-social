@@ -11,11 +11,12 @@ router.route("/:id").get(getPost);
 router.route("/").get(getPosts);
 
 // Private routes (POST, PUT, DELETE, PATCH requests)
-router.post("/", validateToken, createPost);
 router.put("/:id", validateToken, updatePost);
 router.delete("/:id", validateToken, deletePost);
 
 // This is the reason why the like button won't be working until you make the authentication in the frontend
 router.patch("/:id/", validateToken, updateLikes);
+router.post("/", createPost);
+
 
 module.exports = router;

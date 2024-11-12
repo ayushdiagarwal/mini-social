@@ -14,7 +14,7 @@ const getPosts = asyncHandler(async (req, res) => {
 });
 
 //@desc Create a new post
-//@route POST /api/posts/create
+//@route POST /api/posts/
 //@access private
 const createPost = asyncHandler(async(req,res)=>{
     const {title, body, likes} = req.body;
@@ -26,7 +26,7 @@ const createPost = asyncHandler(async(req,res)=>{
     const post = await Post.create({
         title,
         body,
-        user: req.user.id,
+        // user: req.user.id,
         likes,
     });
     res.status(201).json(post);
