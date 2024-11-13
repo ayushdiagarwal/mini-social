@@ -12,6 +12,7 @@
 - [x] associate the posts, comments and stuff with logged in users only
 - [x] Associate comments with a post
 - [ ] Add api for liking/unliking comments
+- [ ] Should I do threads? (Comment under a comment and so on)
 - [ ] keep count of all the posts a user liked (so they can't like it more than once)
 - [ ] Create API for liking/unliking posts
 - [ ] Track counts of posts and comments for each user (for profile stats)
