@@ -35,11 +35,19 @@ export function CommentView({postId}) {
       console.error('Error updating likes:', error);
     }
   };
+
+   // Function to add the new comment directly to the comments state
+   const addNewComment = (newComment) => {
+    setComments(prevComments => [...prevComments, newComment]);
+    setLikesMap(prevLikes => ({
+      ...prevLikes,
+      [newComment._id]: newComment.likes,
+    }));
+  };
   
     return (
       <>
         <p>Comments: {comments.length}</p>
-        <p>{postId}</p>
   
         {
           comments.map((comment)=> {

@@ -14,6 +14,7 @@ const CreatePost = () => {
           })
           .then(function (response) {
             console.log(response);
+            setContent("");
           })
           .catch(function (error) {
             console.log(error);

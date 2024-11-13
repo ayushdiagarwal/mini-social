@@ -27,10 +27,8 @@ export function PostView() {
     // get the post component from this postId
     return (
         <>
-        <h3>hey this is the postview</h3>
-        <p>This is the postId: {postId}</p>
-        <p>title: {post.title}</p>
-        <p>body: {post.body}</p>
+        <h1>{post.title}</h1>
+        <h3>{post.body}</h3>
         <p>Created by: {post.user}</p>
         <p></p>
 

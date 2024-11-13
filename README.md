@@ -11,14 +11,13 @@
 - [x] using packages express mongoose dotenv bcryptjs jsonwebtoken cors
 - [x] associate the posts, comments and stuff with logged in users only
 - [x] Associate comments with a post
-- [ ] Add api for liking/unliking api
+- [ ] Add api for liking/unliking comments
 - [ ] keep count of all the posts a user liked (so they can't like it more than once)
 - [ ] Create API for liking/unliking posts
 - [ ] Track counts of posts and comments for each user (for profile stats)
 - [ ] home page feed
 - [ ] Implement paginated API for home feed (to load posts in batches)
 - [ ] Add tags/categories for posts (for sorting/filtering content)
-- [ ] Make comments associated with a post. 
 - [ ] Set up CORS policy with app.use(cors())
 - [ ] Add API rate limiting for post/comment creation to prevent spam
 - [ ] Include error handling middleware (to catch and handle errors gracefully)
@@ -29,6 +28,7 @@
 - [x] Create a component for creating post
 - [ ] Add register page with validation and error display
 - [ ] Add login page with validation and error display
+- [ ] Refresh posts/comments when creating a post/comment
 - [x] Display comments under posts
 - [x] Create component for adding a comment
 - [ ] Implement feed page to display posts in a paginated manner (e.g., "Load More" or infinite scroll)
